@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="angular.min.js"></script>
+        <script src="script.js"></script>
+<style>
+    .h1{
+        font-family: cursive;
+        background-color: black;
+        color: #fff;
+    } 
+</style>
+    </head>
+    <body ng-app = "myModule" ng-controller = "myController">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!">Leinad-Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shop in style</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Give Your Workout
+                        A New Style!</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <div class="row" id = "product">
+            <!-- Gallery item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4" id = "p_list" ng-repeat ="product in products  ">
+              <div class="bg-white rounded shadow-sm"><img ng-src="{{product.p_image}}" alt="" class="img-fluid card-img-top">
+                <div class="p-4">
+                  <h5> <a href="#" class="text-dark">{{product.p_name}}</a></h5>
+                  <p class="small text-muted mb-0">{{product.p_desc}}</p>
+                  <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                    <div><label>Rs. {{product.p_price}}</label></div>
+                    <button class="btn btn-primary btn-sm"><div class="badge badge-danger px-3 rounded-pill font-weight-normal">Buy</div></button>
+                    <button class="btn btn-secondary btn-sm"><div class="badge badge-danger px-3 rounded-pill font-weight-normal" ng-click="add_cart(product)">Cart</div></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End -->
+
+            <!-- Lead -->
+<h1 class="h1"><center>CART-ITEMS</center></h1>
+  <!-- End -->
+  <!-- Gallery item for cart-->
+  <div class="col-xl-3 col-lg-4 col-md-6 mb-4" id = "p_list" ng-repeat ="cart in carts" ng-init="setTotals(cart)">
+    <div class="bg-white rounded shadow-sm"><img ng-src="{{cart.p_image}}" alt="" class="img-fluid card-img-top">
+      <div class="p-4">
+        <h5> <a href="#" class="text-dark">{{cart.p_name}}</a></h5>
+        <p class="small text-muted mb-0">{{cart.p_desc}}</p>
+        <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+          <div><label>Rs. {{cart.p_price}}</label></div>
+          <button class="btn btn-secondary btn-danger btn-sm"><div class="badge badge-danger px-3 rounded-pill font-weight-normal" ng-click="remove_cart(cart)">Remove cart item</div></button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <h3>Cart items total amount:</h3>
+    <h5>Rs. {{total}}</h5>
+  <!-- End -->
+   
+</div>
+<div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>
+</div>
+</div>
+
+
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+crossorigin="anonymous"
+></script>     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
